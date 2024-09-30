@@ -2,14 +2,31 @@
 
 extern crate markdown;
 
-use {clap::Parser, macroquad::prelude::*, quad_url::get_program_parameters};
+use {
+    clap::Parser,
+    macroquad::{conf::UpdateTrigger, prelude::*},
+    miniquad::conf::Platform,
+    quad_url::get_program_parameters,
+};
 
 use rusty_slider::prelude::*;
 
-fn window_conf() -> Conf {
-    Conf {
-        window_title: "Rusty Slider".to_owned(),
-        fullscreen: true,
+fn window_conf() -> macroquad::conf::Conf {
+    macroquad::conf::Conf {
+        miniquad_conf: Conf {
+            window_title: "Rusty Slider".to_owned(),
+            fullscreen: true,
+            platform: Platform {
+                blocking_event_loop: true,
+                ..Default::default()
+            },
+            ..Default::default()
+        },
+        update_on: Some(UpdateTrigger {
+            key_down: true,
+            mouse_down: true,
+            ..Default::default()
+        }),
         ..Default::default()
     }
 }

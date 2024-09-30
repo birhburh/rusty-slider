@@ -24,6 +24,5 @@
     "code_theme": "Solarized (dark)",
     "code_tab_width": 2,
     "bullet": "• ",
-    "shader": true,
-    "transition": "starburst"
+    "shader": false
 }
